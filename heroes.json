@@ -1,9 +1,15 @@
 {
   "heroes": [
     {
-      "id": 2,
-      "name": "Неизвестный герой",
-      "description": "Скрывающийся в тени",
+      "id": "1efd6333-6508-4b9d-b669-46198b609222",
+      "name": "wdd",
+      "description": "ccsacas",
+      "element": "fire"
+    },
+    {
+      "id": "3706088b-2b1f-4d07-b6d7-4b761c0d1352",
+      "name": "ccddsc",
+      "description": "dfdffd",
       "element": "wind"
     }
   ],
