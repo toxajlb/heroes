@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, createEntityAdapter } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, createEntityAdapter, createSelector } from "@reduxjs/toolkit";
 import { useHttp } from '../../hooks/http.hook';
 
 const heroesAdapter = createEntityAdapter();
@@ -24,8 +24,8 @@ const heroesSlice = createSlice({
     name: 'heroes',
     initialState,
     reducers: {
-        heroCreated: (state, action) => {state.heroes.push(action.payload)},
-        heroDeleted: (state, action) => {state.heroes = state.heroes.filter(item => item.id !== action.payload)}
+        heroCreated: (state, action) => {heroesAdapter.addOne(state, action.payload)},
+        heroDeleted: (state, action) => {heroesAdapter.removeOne(state, action.payload)}
     },
 
     extraReducers: builder => {
@@ -45,6 +45,17 @@ const {actions, reducer} = heroesSlice;
 
 export default reducer;
 
-export const {selectAll} = heroesAdapter.getSelectors(state => state.heroes);
+const {selectAll} = heroesAdapter.getSelectors(state => state.heroes);
+
+export const filteredHeroesSelector = createSelector(
+    state => state.filters.activeFilter,
+    selectAll,
+    (filter, heroes) => {
+        if (filter === 'all')
+            return heroes;
+        else
+            return heroes.filter(item => item.element === filter)
+    }
+)
 
 export const { heroCreated, heroDeleted } = actions;

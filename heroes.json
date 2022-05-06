@@ -1,58 +1,45 @@
 {
   "heroes": [
     {
-<<<<<<< HEAD
-      "id": "3706088b-2b1f-4d07-b6d7-4b761c0d1352",
-      "name": "ccddsc",
-      "description": "dfdffd",
-=======
-      "id": "89c1c564-4f2e-45d1-a695-57cc7fcff87c",
-      "name": "w3rw",
-      "description": "w3rw3",
-      "element": "earth"
-    },
-    {
-      "id": "8f50d822-f571-4641-9589-1c0f21c23346",
-      "name": "qwdq",
-      "description": "qwdwq",
-      "element": "water"
-    },
-    {
-      "id": "e5e6d127-84ca-4d1f-8f8a-49bb50fbe12b",
-      "name": "wef",
-      "description": "wefwfe",
->>>>>>> 8ce801f34b51c907b26e980e31a6e9790ab0a3f8
+      "id": "58619417-601d-4395-9fbd-c890fda52290",
+      "name": "sfsfes",
+      "description": "dssdfsf",
       "element": "wind"
     },
     {
-      "id": "8b59bf0b-adff-4f8c-8ecb-e5448bc2785f",
-      "name": "xZczC",
-      "description": "ssccacsa",
+      "id": "6c91375d-824c-45d5-9b1c-3bcfef310b27",
+      "name": "sfsdfdsf",
+      "description": "cvcssvs",
       "element": "fire"
     }
   ],
   "filters": [
     {
+      "id": "all",
       "name": "all",
       "label": "Все",
       "className": "btn-outline-dark"
     },
     {
+      "id": "fire",
       "name": "fire",
       "label": "Огонь",
       "className": "btn-danger"
     },
     {
+      "id": "water",
       "name": "water",
       "label": "Вода",
       "className": "btn-primary"
     },
     {
+      "id": "wind",
       "name": "wind",
       "label": "Ветер",
       "className": "btn-success"
     },
     {
+      "id": "earth",
       "name": "earth",
       "label": "Земля",
       "className": "btn-secondary"
