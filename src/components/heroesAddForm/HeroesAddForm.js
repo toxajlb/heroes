@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import store from '../../store';
-import { selectAll } from '../heroesFilters/filtersSlice';
 
+import { selectAll } from '../heroesFilters/filtersSlice';
 import { heroCreated } from '../heroesList/heroesSlice';
 
 const HeroesAddForm = () => {
@@ -17,19 +17,19 @@ const HeroesAddForm = () => {
     const dispatch = useDispatch();
     const {request} = useHttp();
 
-    const onSubmitHandler = e => {
+    const onSubmitHandler = (e) => {
         e.preventDefault();
-
         const newHero = {
             id: uuidv4(),
             name: heroName,
             description: heroDescr,
-            element: heroElement,
+            element: heroElement
         }
 
         request("http://localhost:3001/heroes", "POST", JSON.stringify(newHero))
+            .then(res => console.log(res, 'Отправка успешна'))
             .then(dispatch(heroCreated(newHero)))
-            .catch(err => console.log(err))
+            .catch(err => console.log(err));
 
         setHeroName('');
         setHeroDescr('');
@@ -37,18 +37,20 @@ const HeroesAddForm = () => {
     }
 
     const renderFilters = (filters, status) => {
-        if (status === 'loading')
+        if (status === "loading") {
             return <option>Загрузка элементов</option>
-        else if (status === 'error')
+        } else if (status === "error") {
             return <option>Ошибка загрузки</option>
-
-        if (filters && filters.length > 0) {
+        }
+        
+        if (filters && filters.length > 0 ) {
             return filters.map(({name, label}) => {
-                if (name === 'all') return;
+                // eslint-disable-next-line
+                if (name === 'all')  return;
 
                 return <option key={name} value={name}>{label}</option>
             })
-        }      
+        }
     }
 
     return (
@@ -63,7 +65,7 @@ const HeroesAddForm = () => {
                     id="name" 
                     placeholder="Как меня зовут?"
                     value={heroName}
-                    onChange={e => setHeroName(e.target.value)}/>
+                    onChange={(e) => setHeroName(e.target.value)}/>
             </div>
 
             <div className="mb-3">
@@ -76,7 +78,7 @@ const HeroesAddForm = () => {
                     placeholder="Что я умею?"
                     style={{"height": '130px'}}
                     value={heroDescr}
-                    onChange={e => setHeroDescr(e.target.value)}/>
+                    onChange={(e) => setHeroDescr(e.target.value)}/>
             </div>
 
             <div className="mb-3">
@@ -87,7 +89,7 @@ const HeroesAddForm = () => {
                     id="element" 
                     name="element"
                     value={heroElement}
-                    onChange={e => setHeroElement(e.target.value)}>
+                    onChange={(e) => setHeroElement(e.target.value)}>
                     <option value="">Я владею элементом...</option>
                     {renderFilters(filters, filtersLoadingStatus)}
                 </select>
